@@ -110,11 +110,10 @@ export default function Register() {
               className="register-select"
               onChange={handleChange}
             >
-              <option value="">Select Role</option>
+               <option value="">Select Role</option>
               <option value="admin">Admin</option>
-              <option value="manager">Manager</option>
-              <option value="staff">Staff</option>
-              <option value="user">User</option>
+              <option value="manager">User</option>
+              <option value="staff">Instructor</option>
             </select>
 
             {/* Password */}

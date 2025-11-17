@@ -55,15 +55,18 @@ export default function Login() {
 
   return (
     <>
-      <div className="login-container">
+      <div className="login-container wrapper">
         <div className="login-box">
-
           <div className="login-title">
-            <h2 style={{"margin-right": "232px"}}>Login</h2>
+            <a onClick={() => navigate('/')} className="admin-link">Home</a>
+
+            <h2>Login</h2>
+
             <a onClick={() => navigate('/admin-login')} className="admin-link">
               Admin Login
             </a>
           </div>
+
 
           {/* Error Message */}
           {error && (
@@ -107,9 +110,10 @@ export default function Login() {
 
           </form>
         </div>
+       
       </div>
-
-      <Footer />
+  <Footer />
+     
     </>
   );
 }

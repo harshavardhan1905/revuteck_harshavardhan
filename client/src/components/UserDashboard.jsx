@@ -41,18 +41,35 @@ export default function UserDashboard() {
 
   //Delte button handels
   const handleDelete = async (id) => {
+  try {
     console.log("Deleting file with id:", id);
-    await fetch(`https://revuteck-harshavardhan.onrender.com/api/resources/${id}`, {
-      method: "DELETE"
-    });
+
+    const res = await fetch(
+      `https://revuteck-harshavardhan.onrender.com/api/resources/${id}`,
+      { method: "DELETE" }
+    );
+
+    const data = await res.json();
+
+    if (!res.ok) {
+      return alert("Delete failed: " + data.message);
+    }
+
+    alert("File deleted successfully!");
     fetchResources();
+
+  } catch (error) {
+    console.error("Delete Error:", error);
+    alert("Something went wrong while deleting.");
   }
+};
+
   // console.log("Access Permissions:", data.resources);
   // console.log("Stored User:", resources);
 
 
   return (<>
-    <div style={{ padding: "20px" }}>
+    <div style={{ padding: "20px" }} className="wrapper">
 
       {/* TOP SECTION */}
       <div className="sec-top" style={{
