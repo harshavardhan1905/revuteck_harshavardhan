@@ -34,7 +34,7 @@ export default function Register() {
 
     console.log("Sending:", formData);
 
-    const response = await fetch("http://localhost:5000/api/register/register", {
+    const response = await fetch("https://revuteck-harshavardhan.onrender.com/api/register/register", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(formData),

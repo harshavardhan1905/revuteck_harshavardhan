@@ -6,7 +6,7 @@ export default function ResourceManagement() {
   const [resources, setResources] = useState([]);
 
   const fetchResources = async () => {
-    const res = await fetch("http://localhost:5000/api/resources");
+    const res = await fetch("https://revuteck-harshavardhan.onrender.com/api/resources");
     const data = await res.json();
     setResources(data.resources);
   };
@@ -22,7 +22,7 @@ export default function ResourceManagement() {
     formData.append("file", file);
     formData.append("title", title);
 
-    await fetch("http://localhost:5000/api/resources/upload", {
+    await fetch("https://revuteck-harshavardhan.onrender.com/api/resources/upload", {
       method: "POST",
       body: formData
     });
@@ -33,7 +33,7 @@ export default function ResourceManagement() {
   };
 
   const deleteResource = async (id) => {
-    await fetch(`http://localhost:5000/api/resources/${id}`, {
+    await fetch(`https://revuteck-harshavardhan.onrender.com/api/resources/${id}`, {
       method: "DELETE"
     });
     fetchResources();
@@ -43,7 +43,7 @@ export default function ResourceManagement() {
     const newTitle = prompt("Enter new title:");
     if (!newTitle) return;
 
-    await fetch(`http://localhost:5000/api/resources/${id}`, {
+    await fetch(`https://revuteck-harshavardhan.onrender.com/api/resources/${id}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ title: newTitle })
@@ -89,7 +89,7 @@ export default function ResourceManagement() {
               <td>{r.title}</td>
               <td>
                 {/* <a href={`/${r.filePath}`} target="_blank">View</a> */}
-                <a href={`http://localhost:5000/${r.filePath}`} target="_blank">View</a>
+                <a href={`https://revuteck-harshavardhan.onrender.com/${r.filePath}`} target="_blank">View</a>
 
               </td>
               <td>

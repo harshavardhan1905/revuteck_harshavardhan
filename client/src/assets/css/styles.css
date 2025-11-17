@@ -678,20 +678,22 @@ table td {
 }
 
 table th {
-  background: #f2f2f2;
+  background: #423c3c;
   font-weight: bold;
-  color: #333;
-  border: #2f2f3f;
+  border: 3px solid #000000;
+  color: #f4f2f2;
+  /* border: #2f2f3f; */
 }
 
 
 
 table tr:hover {
-  background: #f1f1f1;
-  color: black;
+  background: #2f2c2c;
+  color: rgb(255, 255, 255);
 }
 .top {
   display: flex;
+  color: rgb(246, 244, 241);
   align-items: center;
   justify-content: space-between; /* centers the title */
   position: relative;       /* lets search bar float right */
@@ -760,4 +762,18 @@ table tr:hover {
 
 .logout-btn:hover {
   background: #d93636;
+}
+.user-btn{
+  background: #50535d;
+  border: none;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s;
+  text-decoration: none;
+}
+.user-btn:hover {
+  background: #206ae1;
 }

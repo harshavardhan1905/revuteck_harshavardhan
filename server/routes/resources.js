@@ -53,7 +53,7 @@ router.delete("/:id", async (req, res) => {
     res.json({ message: "Resource deleted successfully" });
 
   } catch (err) {
-    res.status(500).json({ message: "Server error" });
+    res.status(500).json(err.message);
   }
 });
 

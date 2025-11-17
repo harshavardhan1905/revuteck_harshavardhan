@@ -13,7 +13,7 @@ export default function DeleteUser() {
 
     try {
       const response = await fetch(
-        `http://localhost:5000/api/user/delete/${userName}`,
+        `https://revuteck-harshavardhan.onrender.com/api/user/delete/${userName}`,
         {
           method: "DELETE", // ❤️ IMPORTANT
           headers: {

@@ -30,7 +30,7 @@ export default function UserDashboard() {
 
   // Fetch resources
   const fetchResources = async () => {
-    const res = await fetch("http://localhost:5000/api/resources");
+    const res = await fetch("https://revuteck-harshavardhan.onrender.com/api/resources");
     const data = await res.json();
     setResources(data.resources);
   };
@@ -39,17 +39,29 @@ export default function UserDashboard() {
     window.location.href = "/";
   };
 
+  //Delte button handels
+  const handleDelete = async (id) => {
+    console.log("Deleting file with id:", id);
+    await fetch(`https://revuteck-harshavardhan.onrender.com/api/resources/${id}`, {
+      method: "DELETE"
+    });
+    fetchResources();
+  }
+  // console.log("Access Permissions:", data.resources);
+  // console.log("Stored User:", resources);
+
+
   return (<>
-    <div style={{padding:"20px"}}>
+    <div style={{ padding: "20px" }}>
 
       {/* TOP SECTION */}
-      <div className="sec-top" style={{ 
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center"
+      <div className="sec-top" style={{
+        display: "flex",
+        justifyContent: "space-between",
+        alignItems: "center"
       }}>
         <div>
-          <h2 style={{textAlign:"left"}}>User Dashboard</h2>
+          <h2 style={{ textAlign: "left" }}>User Dashboard</h2>
           <p>Your access permissions determine what you can see & do.</p>
         </div>
 
@@ -78,8 +90,12 @@ export default function UserDashboard() {
             <thead>
               <tr>
                 <th>Title</th>
-                <th>Preview</th>
+                <th>Filename</th>
                 <th>Download</th>
+                <th>Read</th>
+                <th>Write</th>
+                <th>Update</th>
+                <th>Delete</th>
               </tr>
             </thead>
 
@@ -89,22 +105,53 @@ export default function UserDashboard() {
                   <td>{file.title}</td>
 
                   <td>
-                    <a
-                      href={`http://localhost:5000/${file.filePath}`}
+                    <span
+                      href={`https://revuteck-harshavardhan.onrender.com/${file.filePath}`}
                       target="_blank"
                       rel="noreferrer"
+
+              
                     >
-                      View File
-                    </a>
+                      {file.filePath.split("resources").pop()} 
+                    </span>
+                   
                   </td>
 
                   <td>
                     <a
-                      href={`http://localhost:5000/${file.filePath}`}
+                      href={`https://revuteck-harshavardhan.onrender.com/${file.filePath}`}
                       download
                     >
                       Download
                     </a>
+                  </td>
+                  <td>
+                    {storedUser.read_access ? (
+                       <a className="user-btn" style={{ padding: "5px 10px" }} href={`https://revuteck-harshavardhan.onrender.com/${file.filePath}`} target="_target">
+                        Read
+                        </a>
+                        
+                    ) : (
+                      "No access"
+                    )}
+                  </td>
+
+                  <td>
+                    {storedUser.write_access ? (
+                      <button style={{ padding: "5px 10px" }}>Write</button>
+                    ) : ("No access")}
+                  </td>
+                  <td>
+                    {storedUser.update_access ? (
+                      <button style={{ padding: "5px 10px" }}>Update</button>
+                    ) : ("No access")}
+                  </td>
+                  <td>
+                    {storedUser.delete_access ? (
+                      <button style={{ padding: "5px 10px" }}
+                      onClick={()=> handleDelete(file._id)}
+                      >Delete</button>
+                    ) : ("No access")}
                   </td>
                 </tr>
               ))}
@@ -113,7 +160,7 @@ export default function UserDashboard() {
         )}
       </div>
 
-      <hr />
+    
 
       {/* ACTION BUTTONS */}
       <div style={{ marginTop: "20px" }}>
@@ -128,7 +175,7 @@ export default function UserDashboard() {
 
         {/* WRITE */}
         {access.write_access ? (
-          <button style={btnStyle}>Upload Resource</button>
+          <button style={btnStyle}>Write Resource</button>
         ) : (
           <Disabled label="Upload Resource" />
         )}
@@ -148,10 +195,10 @@ export default function UserDashboard() {
         )}
       </div>
 
-     
+
     </div>
-     <Footer />
-    </>
+    <Footer />
+  </>
   );
 }
 

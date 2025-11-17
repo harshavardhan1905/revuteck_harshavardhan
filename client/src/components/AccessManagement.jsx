@@ -6,7 +6,7 @@ export default function AccessManagement() {
 
   // Fetch all users
   const loadUsers = async () => {
-    const res = await fetch("http://localhost:5000/api/allusers");
+    const res = await fetch("https://revuteck-harshavardhan.onrender.com/api/allusers");
     const data = await res.json();
     setUsers(data.users);
 
@@ -41,7 +41,7 @@ export default function AccessManagement() {
   const saveAccess = async (user_name) => {
     const access = editedAccess[user_name];
 
-    await fetch(`http://localhost:5000/api/access/update-access/${user_name}`, {
+    await fetch(`https://revuteck-harshavardhan.onrender.com/api/access/update-access/${user_name}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({

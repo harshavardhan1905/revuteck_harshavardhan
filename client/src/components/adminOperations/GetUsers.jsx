@@ -10,7 +10,7 @@ export default function GetUsers() {
   const fetchUsers = () => {
     setLoading(true);
 
-    fetch("http://localhost:5000/api/allusers")
+    fetch("https://revuteck-harshavardhan.onrender.com/api/allusers")
       .then(async (res) => {
         if (!res.ok) {
           const msg = await res.json();
