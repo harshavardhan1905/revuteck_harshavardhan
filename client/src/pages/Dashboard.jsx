@@ -44,7 +44,7 @@ export default function Dashboard() {
 
     // Fetch All Users
     const fetchUsers = async () => {
-        const res = await fetch("http://localhost:5000/api/allusers");
+        const res = await fetch("https://revuteck-harshavardhan.onrender.com/api/allusers");
         const data = await res.json();
 
         const users = data.users || [];
@@ -63,7 +63,7 @@ export default function Dashboard() {
 
     // Fetch Resources Count
     const fetchResources = async () => {
-        const res = await fetch("http://localhost:5000/api/resources");
+        const res = await fetch("https://revuteck-harshavardhan.onrender.com/api/resources");
         const data = await res.json();
 
         setStats(prev => ({
