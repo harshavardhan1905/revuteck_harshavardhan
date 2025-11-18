@@ -3,6 +3,7 @@
     padding: 0;
     font-family: Arial, sans-serif;
     color: black;
+    background: #f4f5f7;
 }
 .wrapper {
   min-height: 100vh;
