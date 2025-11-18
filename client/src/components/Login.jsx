@@ -45,7 +45,11 @@ export default function Login() {
       console.log("Logged in User:", result.user);
 
       // Redirect to homepage/dashboard
-      navigate("/user-dashboard");
+      if(result.user){
+        navigate("/user-dashboard");
+      }else{
+        navigate("/");
+      }
 
     } catch (err) {
       console.error(err);

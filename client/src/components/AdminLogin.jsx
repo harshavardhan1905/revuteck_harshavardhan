@@ -21,6 +21,7 @@ export default function AdminLogin() {
             navigate('/admin-dashboard');
         } else {
             alert("Invalid credentials. Please try again.");
+            navigate('/admin-login');
         } 
         console.log("Login Data:", data);
     };
